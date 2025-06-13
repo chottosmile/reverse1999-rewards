@@ -1,0 +1,252 @@
+/* === General === */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: sans-serif;
+  background: #000 url('assets/bg.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  user-select: none;
+  pointer-events: auto;
+}
+
+/* === Layout === */
+#summon-info {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#summon-count {
+  min-width: 2.5em;
+  text-align: right;
+}
+
+#reset-btn {
+  width: 120px;
+  cursor: pointer;
+}
+
+#reset-btn:hover {
+  content: url('assets/reset-hover.png');
+}
+
+#record-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 120px;
+  cursor: pointer;
+}
+
+/* === Button Layout === */
+#button-wrapper {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  gap: 20px;
+  z-index: 1;
+}
+
+#pull-btn-10 {
+  position: absolute;
+/*  bottom: 120px;  */
+  top: 20px;
+  right: 30px;
+  /* width: 25vw; */
+  max-width: 200px;
+  /* min-width: 160px; */
+  cursor: pointer;
+  z-index: 2;
+  /* opacity: 0; */
+}
+
+.pull-btn {
+  width: 25vw;
+  max-width: 300px;
+  min-width: 160px;
+  height: auto;
+  cursor: pointer;
+}
+
+/* === Video Screen === */
+#video-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+#reward-video {
+  width: 100%;
+  height: 100%;
+  cursor: default;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+#skip-btn {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  width: 300px;
+  cursor: pointer;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: auto;
+}
+
+/* === Records Modal === */
+#records-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+#records-modal {
+  background: #111;
+  color: white;
+  padding: 20px;
+  width: 900px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: hidden;
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#record-title {
+  font-size: 24px;
+  text-align: center;
+  margin: 5px 0 10px;
+}
+
+/* === Table === */
+#records-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  overflow: hidden;
+}
+
+#records-table thead,
+#records-table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+#records-table tbody {
+  display: block;
+  overflow-y: auto;
+  height: 350px;
+  scrollbar-width: none;
+}
+
+#records-table tbody::-webkit-scrollbar {
+  display: none;
+}
+
+#records-table th {
+  background-color: #222;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 2px solid #fff;
+  padding: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#records-table td {
+  border: 1px solid white;
+  padding: 5px 10px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 22px;
+}
+
+.star5 td {
+  background-color: rgba(255, 215, 0, 0.15); /* Yellow tone */
+  color: gold;
+  font-weight: bold;
+}
+
+.star6 td {
+  background-color: rgba(255, 165, 0, 0.15); /* Orange tone */
+  color: orange;
+  font-weight: bold;
+}
+
+/* === Pagination === */
+#pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+#pagination-controls button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* === Footer Note === */
+#footer-note {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  opacity: 20%;
+  pointer-events: none;
+  z-index: 9999;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reverse: 1999 Reward Gacha</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <audio id="bgm" src="assets/bgm.mp3" loop></audio>
+
+  <!-- 🌟 Summon info (Top-left) -->
+  <div id="summon-info">
+    Summoned: <span id="summon-count">0</span>
+    <img id="reset-btn" src="assets/reset.png" alt="Reset Pity" />
+  </div>
+
+  <img id="record-btn" src="assets/record.png" alt="Record"
+       style="position: absolute; bottom: 20px; left: 20px; width: 120px; height: auto; cursor: pointer;" />
+
+  <div id="records-overlay">
+    <div id="records-modal">
+      <h2 id="record-title">Summon Record</h2>
+      <table id="records-table">
+        <thead>
+          <tr><th>★</th><th>Time</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div id="pagination-controls">
+        <button id="prev-page">◄</button>
+        <span id="page-indicator">1/1</span>
+        <button id="next-page">►</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🎮 Buttons aligned to bottom-right -->
+  <div id="button-wrapper">
+    <img src="assets/btn1.png" id="pull-btn-1" class="pull-btn" />
+    <img src="assets/btn2.png" id="pull-btn-2" class="pull-btn" />
+  </div>
+
+  <!-- X10 button placed separately -->
+  <img src="assets/btn10.png" id="pull-btn-10" class="pull-btn" />
+
+  <!-- 🎥 Video reward screen (hidden until summon) -->
+  <div id="video-screen" style="display: none;">
+    <img id="skip-btn" src="assets/skip.png" alt="Skip" />
+    <video id="reward-video" autoplay></video>
+  </div>
+
+  <script src="script.js"></script>
+
+  <div id="footer-note">
+    *This is a fan-made simulator for entertainment and giveaway purposes only. It is not affiliated with or endorsed by Reverse: 1999 or Bluepoch.
+  </div>
+</body>
+</html>
