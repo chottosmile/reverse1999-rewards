@@ -113,7 +113,7 @@ function hideRecordModal() {
 
 // === Video Close / Skip Logic ===
 rewardVideo.addEventListener('click', () => {
-  if (videoPlaying && videoStage !== 2) return;
+  if (!allowClick) return; // 🚫 Block click if not ready
 
   if (videoStage === 2) {
     videoStage = 0;
@@ -125,11 +125,28 @@ rewardVideo.addEventListener('click', () => {
   }
 });
 
-skipBtn.addEventListener('click', () => {
+/*
+rewardVideo.addEventListener('click', (e) => {
+  e.preventDefault(); // do nothing
+});
+*/
+
+rewardVideo.addEventListener('ended', () => {
   if (videoStage === 1) {
     videoStage = 2;
-    rewardVideo.src = `assets/vdo/${currentStar} star B.mp4`; // part B
+
+    // ✅ Prevent click right away
+    allowClick = false;
+
+    rewardVideo.src = `assets/vdo/${currentStar} star B.mp4`;
     rewardVideo.play();
+
+    // ✅ Allow click after 3 sec
+    setTimeout(() => {
+      allowClick = true;
+    }, 3000); // or 5000 for 5s
+
+    // Optional: show skip again
     skipBtn.style.opacity = 0;
     setTimeout(() => {
       skipBtn.style.opacity = 1;
@@ -143,6 +160,38 @@ skipBtn.addEventListener('click', () => {
     skipBtn.style.opacity = 0;
   }
 });
+
+
+skipBtn.addEventListener('click', () => {
+  if (videoStage === 1) {
+    videoStage = 2;
+
+    // 🚫 Block click immediately BEFORE playing video B
+    allowClick = false;
+
+    rewardVideo.src = `assets/vdo/${currentStar} star B.mp4`;
+    rewardVideo.play();
+
+    // ✅ Allow click after delay (e.g. 3 sec)
+    setTimeout(() => {
+      allowClick = true;
+    }, 3000); // Or 5000 for 5 seconds
+
+    // Show skip again (optional fade)
+    skipBtn.style.opacity = 0;
+    setTimeout(() => {
+      skipBtn.style.opacity = 1;
+    }, 0);
+  } else if (videoStage === 2) {
+    videoStage = 0;
+    videoPlaying = false;
+    rewardVideo.pause();
+    rewardVideo.currentTime = 0;
+    videoScreen.style.display = 'none';
+    skipBtn.style.opacity = 0;
+  }
+});
+
 
 
 // === Reset Button Logic ===
