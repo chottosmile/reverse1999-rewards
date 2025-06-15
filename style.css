@@ -6,7 +6,7 @@ body, html {
   height: 100%;
   overflow: hidden;
   font-family: sans-serif;
-  background: #000 url('assets/bg.png') no-repeat center center fixed;
+  background: #000 url('assets/bg.webp') no-repeat center center fixed;
   background-size: cover;
 }
 
