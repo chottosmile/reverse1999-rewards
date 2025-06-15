@@ -69,7 +69,7 @@ function playVideo(star) {
   videoStage = 1;
   currentStar = star;
 
-  rewardVideo.src = `assets/${star} star A.mp4`; // part A
+  rewardVideo.src = `assets/vdo/${star} star A.mp4`; // part A
   videoScreen.style.display = 'flex';
   rewardVideo.play();
   videoPlaying = true;
@@ -128,7 +128,7 @@ rewardVideo.addEventListener('click', () => {
 skipBtn.addEventListener('click', () => {
   if (videoStage === 1) {
     videoStage = 2;
-    rewardVideo.src = `assets/${currentStar} star B.mp4`; // part B
+    rewardVideo.src = `assets/vdo/${currentStar} star B.mp4`; // part B
     rewardVideo.play();
     skipBtn.style.opacity = 0;
     setTimeout(() => {

@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Reverse: 1999 Reward Gacha</title>
+  <title>Reverse: 1999 Rewards</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <audio id="bgm" src="assets/bgm.mp3" loop></audio>
+  <audio id="bgm" src="assets/bgm/bgm.mp3" loop></audio>
 
   <!-- 🌟 Summon info (Top-left) -->
   <div id="summon-info">
     Summoned: <span id="summon-count">0</span>
-    <img id="reset-btn" src="assets/reset.png" alt="Reset Pity" />
+    <img id="reset-btn" src="assets/img/reset.png" alt="Reset Pity" />
   </div>
 
-  <img id="record-btn" src="assets/record.png" alt="Record"
+  <img id="record-btn" src="assets/img/record.png" alt="Record"
        style="position: absolute; bottom: 20px; left: 20px; width: 120px; height: auto; cursor: pointer;" />
 
   <div id="records-overlay">
@@ -38,16 +38,16 @@
 
   <!-- 🎮 Buttons aligned to bottom-right -->
   <div id="button-wrapper">
-    <img src="assets/btn1.png" id="pull-btn-1" class="pull-btn" />
-    <img src="assets/btn2.png" id="pull-btn-2" class="pull-btn" />
+    <img src="assets/img/btn1.png" id="pull-btn-1" class="pull-btn" />
+    <img src="assets/img/btn2.png" id="pull-btn-2" class="pull-btn" />
   </div>
 
   <!-- X10 button placed separately -->
-  <img src="assets/btn10.png" id="pull-btn-10" class="pull-btn" />
+  <img src="assets/img/btn10.png" id="pull-btn-10" class="pull-btn" />
 
   <!-- 🎥 Video reward screen (hidden until summon) -->
   <div id="video-screen" style="display: none;">
-    <img id="skip-btn" src="assets/skip.png" alt="Skip" />
+    <img id="skip-btn" src="assets/img/skip.png" alt="Skip" />
     <video id="reward-video" autoplay></video>
   </div>
 
