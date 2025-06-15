@@ -9,6 +9,7 @@ const overlay = document.getElementById('records-overlay');
 const recordBtn = document.getElementById('record-btn');
 const pullBtn1 = document.getElementById('pull-btn-1');
 const pullBtn2 = document.getElementById('pull-btn-2');
+const recordsPerPage = 10;
 
 document.addEventListener('contextmenu', e => e.preventDefault()); // disable right click
 document.querySelectorAll('img').forEach(img => {
@@ -25,7 +26,9 @@ let summonCount = 0;
 let pity = 0;
 let currentPage = 1;
 let videoPlaying = false;
-const recordsPerPage = 10;
+let videoStage = 0;
+let currentStar = null;
+let allowClick = false;
 
 // === Gacha Logic ===
 function getRarity() {
@@ -63,18 +66,14 @@ function getRarity() {
 
 // === Video Logic ===
 function playVideo(star) {
-  bgm.pause();
-  bgm.currentTime = 0;
-  videoPlaying = true;
-  rewardVideo.src = `assets/${star} star.mp4`;
+  videoStage = 1;
+  currentStar = star;
+
+  rewardVideo.src = `assets/${star} star A.mp4`; // part A
   videoScreen.style.display = 'flex';
-  rewardVideo.muted = false;
   rewardVideo.play();
+  videoPlaying = true;
 
-  // Prevent exit early
-  setTimeout(() => videoPlaying = false, 18000);
-
-  // Show skip button immediately (change delay if needed)
   skipBtn.style.opacity = 0;
   setTimeout(() => {
     skipBtn.style.display = 'block';
@@ -114,25 +113,37 @@ function hideRecordModal() {
 
 // === Video Close / Skip Logic ===
 rewardVideo.addEventListener('click', () => {
-  if (videoPlaying) return;
-  rewardVideo.pause();
-  rewardVideo.currentTime = 0;
-  videoScreen.style.display = 'none';
-  skipBtn.style.display = 'none';
-bgm.currentTime = 0;
-bgm.play();
+  if (videoPlaying && videoStage !== 2) return;
 
+  if (videoStage === 2) {
+    videoStage = 0;
+    videoPlaying = false;
+    rewardVideo.pause();
+    rewardVideo.currentTime = 0;
+    videoScreen.style.display = 'none';
+    skipBtn.style.opacity = 0;
+  }
 });
 
 skipBtn.addEventListener('click', () => {
-  rewardVideo.pause();
-  rewardVideo.currentTime = 0;
-  videoScreen.style.display = 'none';
-  skipBtn.style.display = 'none';
-bgm.currentTime = 0;
-bgm.play();
-
+  if (videoStage === 1) {
+    videoStage = 2;
+    rewardVideo.src = `assets/${currentStar} star B.mp4`; // part B
+    rewardVideo.play();
+    skipBtn.style.opacity = 0;
+    setTimeout(() => {
+      skipBtn.style.opacity = 1;
+    }, 0);
+  } else if (videoStage === 2) {
+    videoStage = 0;
+    videoPlaying = false;
+    rewardVideo.pause();
+    rewardVideo.currentTime = 0;
+    videoScreen.style.display = 'none';
+    skipBtn.style.opacity = 0;
+  }
 });
+
 
 // === Reset Button Logic ===
 resetBtn.addEventListener('click', () => {
