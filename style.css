@@ -250,3 +250,16 @@ img {
   pointer-events: none;
   z-index: 9999;
 }
+
+/* Block long-press menu + Prevent text highlight */
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Block gesture from long-press video */
+video {
+  pointer-events: none;
+}
+
